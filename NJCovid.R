@@ -238,7 +238,13 @@ Data_1 <- Data_1 %>% add_row(
     Date = "2020-05-17",
     `New Cases` = 1272,
     `Union County New Cases` = (133)
+  )  %>%
+  add_row(
+    Date = "2020-05-18",
+    `New Cases` = 1735,
+    `Union County New Cases` = (201)
   )
+
 
 # Do some math
 
@@ -314,24 +320,26 @@ Data_1$Dummy <- NULL
 Data_1 <- Data_1 %>% mutate(`Log of NJ New Cases Five Day Moving Average` = log(`NJ Five Day Moving Average`),
                           `Log of Union County NJ New Cases Five Day Moving Average` = log(`Union County NJ Five Day Moving Average`))
 
+Data_1$Day <- weekdays(as.Date(Data_1$Date))
+
 ### Plot of NJ New Cases
 
 NJ_Plot_1 <- ggplot(Data_1, aes(x = Date, y = `New Cases`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_1
 
 ### Plot of NJ New Cases Moving Average
 
 NJ_Plot_2 <- ggplot(Data_1, aes(x = Date, y = `NJ Five Day Moving Average`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_2
 
 ### Plot of log new cases
 
 NJ_Plot_3 <- ggplot(Data_1, aes(x = Date, y = `Log New Cases NJ`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_3
 
@@ -339,7 +347,7 @@ NJ_Plot_3
 ### Plot of log new cases 5 day moving average
 
 NJ_Plot_4 <- ggplot(Data_1, aes(x = Date, y = `Log of NJ New Cases Five Day Moving Average`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_4
 
@@ -347,14 +355,14 @@ NJ_Plot_4
 ### Plot of Union County NJ New Cases
 
 NJ_Plot_5 <- ggplot(Data_1, aes(x = Date, y = `Union County New Cases`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_5
 
 ### Plot of Union County NJ New Casese Moving Average
 
 NJ_Plot_6 <- ggplot(Data_1, aes(x = Date, y = `Union County NJ Five Day Moving Average`)) +
-  geom_point()
+  geom_point(aes(color = Day))
 
 NJ_Plot_6
 
