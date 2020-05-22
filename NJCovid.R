@@ -253,6 +253,11 @@ Data_1 <- Data_1 %>% add_row(
     Date = "2020-05-20",
     `New Cases` = 1670,
     `Union County New Cases` = (91) #15122-15031
+  )   %>%
+  add_row(
+    Date = "2020-05-21",
+    `New Cases` = 1304,
+    `Union County New Cases` = (54) #15176--15122
   )
 
 
